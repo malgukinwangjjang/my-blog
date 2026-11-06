@@ -2,6 +2,7 @@
 import { parseMarkdown, escapeHtml } from './markdown.js';
 import { initThemeToggle } from './theme.js';
 import { renderEditor, checkWriteApi } from './editor.js';
+import { renderGame } from './game.js';
 
 const SITE_TITLE = 'My Blog';
 const SITE_DESCRIPTION = '마크다운으로 쓰는 기록';
@@ -10,7 +11,7 @@ const SLUG_PATTERN = /^[a-z0-9-]+$/;
 const app = document.getElementById('app');
 let postsPromise = null;
 let renderToken = 0;
-let leaveCurrent = null; // 현재 화면을 떠날 때 실행할 정리 함수 (글쓰기 화면)
+let leaveCurrent = null; // 현재 화면을 떠날 때 실행할 정리 함수 (글쓰기·게임 화면)
 
 // ------------------------------------------------------------
 // 데이터
@@ -217,6 +218,11 @@ async function showWrite(slug, token) {
   });
 }
 
+function showGame() {
+  setTitle('2048 게임');
+  leaveCurrent = renderGame({ app });
+}
+
 // ------------------------------------------------------------
 // 라우터
 // ------------------------------------------------------------
@@ -270,6 +276,8 @@ async function renderRoute(hash) {
       await showTag(param, token);
     } else if (section === 'write') {
       await showWrite(param || null, token);
+    } else if (section === 'game' && !param) {
+      showGame();
     } else {
       showNotFound();
     }
