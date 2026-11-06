@@ -148,7 +148,7 @@ img {
   gap: 4px;
 }
 
-.write-link {
+.header-link {
   display: inline-flex;
   align-items: center;
   min-height: 44px;
@@ -158,7 +158,7 @@ img {
   font-size: 0.9375rem;
 }
 
-.write-link:hover {
+.header-link:hover {
   background: var(--surface);
   color: var(--text);
   text-decoration: none;
@@ -741,6 +741,99 @@ textarea.input {
   background: var(--code-bg);
   color: var(--code-text);
   line-height: 1.6;
+}
+
+/* ============================================================
+   픽셀 아트 에디터
+   ============================================================ */
+.pixel-editor {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+}
+
+.pixel-stage {
+  min-width: 0;
+}
+
+.pixel-canvas {
+  display: block;
+  width: 100%;
+  max-width: 32rem;
+  height: auto;
+  aspect-ratio: 1;
+  border: 1px solid var(--border-strong);
+  border-radius: 4px;
+  image-rendering: pixelated;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+.pixel-panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 16px;
+  align-content: start;
+}
+
+.pixel-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.pixel-palette {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 44px);
+  gap: 6px;
+  max-width: calc(8 * 44px + 7 * 6px);
+}
+
+.swatch {
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.swatch[aria-pressed="true"] {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.pixel-current {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+}
+
+.pixel-custom,
+.pixel-scale {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.9375rem;
+}
+
+.pixel-color-input {
+  width: 44px;
+  height: 44px;
+  padding: 2px;
+  border: 1px solid var(--border-strong);
+  border-radius: 6px;
+  background: var(--bg);
+  cursor: pointer;
+}
+
+.pixel-scale-select {
+  width: auto;
+  min-height: 44px;
 }
 
 /* ============================================================
