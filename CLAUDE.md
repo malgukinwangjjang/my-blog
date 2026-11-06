@@ -22,6 +22,7 @@ My_Blog/
 ├── js/
 │   ├── app.js          # 라우팅, 데이터 로딩, 화면 렌더링
 │   ├── editor.js       # 글쓰기 화면 (폼, 미리보기, 임시 저장, 저장/내려받기)
+│   ├── game.js         # 2048 퍼즐 게임 (규칙은 순수 함수, 점수·최고 점수 저장)
 │   ├── markdown.js     # 마크다운 → HTML 변환기 (front matter 파싱 포함)
 │   └── theme.js        # 다크/라이트 모드 전환
 ├── posts/
@@ -85,6 +86,7 @@ description: 목록과 메타 태그에 쓰이는 한두 문장 요약
 | `#/tag/<태그>` | 태그별 글 목록 |
 | `#/write` | 새 글 쓰기 |
 | `#/write/<slug>` | 글 수정 |
+| `#/game` | 2048 게임 (방향키·WASD·스와이프, 상태는 `localStorage`의 `game2048:state`·`game2048:best`) |
 
 ### 글쓰기 화면
 - `node serve.js`로 열면 `/api/status`가 응답하므로 헤더의 "글쓰기" 링크와 글의 "글 수정" 링크가 보이고, 저장 시 `POST /api/posts`가 `.md` 파일과 `posts/index.json`을 함께 갱신한다(날짜를 바꿔 slug가 달라지면 이전 파일을 지운다).
