@@ -1,8 +1,0 @@
-# 줄 끝은 LF로 통일 (CLAUDE.md 코드 스타일)
-* text=auto eol=lf
-*.png binary
-*.jpg binary
-*.jpeg binary
-*.gif binary
-*.webp binary
-*.ico binary
