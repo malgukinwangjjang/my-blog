@@ -2,6 +2,7 @@
 import { parseMarkdown, escapeHtml } from './markdown.js';
 import { initThemeToggle } from './theme.js';
 import { renderEditor, checkWriteApi } from './editor.js';
+import { renderPixelEditor } from './pixel.js';
 
 const SITE_TITLE = 'My Blog';
 const SITE_DESCRIPTION = '마크다운으로 쓰는 기록';
@@ -270,6 +271,9 @@ async function renderRoute(hash) {
       await showTag(param, token);
     } else if (section === 'write') {
       await showWrite(param || null, token);
+    } else if (section === 'pixel' && !param) {
+      setTitle('픽셀 아트');
+      leaveCurrent = renderPixelEditor({ app });
     } else {
       showNotFound();
     }
